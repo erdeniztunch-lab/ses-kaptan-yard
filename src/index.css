@@ -52,6 +52,22 @@ All colors MUST be HSL.
     --shadow-card: 0 4px 20px -4px hsl(212 20% 50% / 0.1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Status colors for logistics workflow */
+    --status-pending: 38 91% 60%;      /* Orange */
+    --status-accepted: 142 76% 36%;    /* Green */
+    --status-unavailable: 0 84% 60%;   /* Red */
+    --status-calling: 221 83% 53%;     /* Blue */
+
+    /* Mobile-friendly spacing */
+    --spacing-touch: 44px;             /* Minimum touch target */
+    --spacing-mobile: 16px;            /* Mobile padding */
+    --spacing-card: 20px;              /* Card spacing */
+
+    /* Typography for mobile */
+    --text-mobile-large: 18px;
+    --text-mobile-medium: 16px;
+    --text-mobile-small: 14px;
+
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;

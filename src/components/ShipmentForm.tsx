@@ -27,6 +27,15 @@ const cities = [
   "Şanlıurfa", "Mersin", "Diyarbakır", "Kayseri", "Eskişehir", "Trabzon"
 ];
 
+// Popular routes (smart defaults)
+const popularRoutes = [
+  { from: "İstanbul", to: "Gaziantep", loadType: "Tekstil" },
+  { from: "İstanbul", to: "İzmir", loadType: "Genel Kargo" },
+  { from: "Ankara", to: "İstanbul", loadType: "Genel Kargo" },
+  { from: "İstanbul", to: "Adana", loadType: "Gıda" },
+  { from: "Bursa", to: "İstanbul", loadType: "Tekstil" }
+];
+
 const loadTypes = [
   "Genel Kargo", "Tekstil", "Gıda", "Soğutmalı", "ADR (Tehlikeli Madde)", 
   "Palet", "Dorse", "Araç Taşıma", "İnşaat Malzemesi"

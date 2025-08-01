@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShipmentForm, ShipmentRequest } from "./ShipmentForm";
 import { CallMonitor } from "./CallMonitor";
 import { Badge } from "@/components/ui/badge";
-import { BarChart3, Phone, Clock, CheckCircle2, TrendingUp, Users } from "lucide-react";
+import { ProgressSteps } from "./ProgressSteps";
+import { OnboardingTutorial } from "./OnboardingTutorial";
+import { BarChart3, Phone, Clock, CheckCircle2, TrendingUp, Users, HelpCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface DashboardStats {
   totalShipments: number;
@@ -27,10 +30,29 @@ const mockStats: DashboardStats = {
 export const Dashboard = () => {
   const [currentShipment, setCurrentShipment] = useState<ShipmentRequest | null>(null);
   const [view, setView] = useState<"form" | "monitor">("form");
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const { toast } = useToast();
+
+  // Show onboarding for first-time users (check localStorage)
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem("hasSeenOnboarding");
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
+  const handleOnboardingClose = () => {
+    localStorage.setItem("hasSeenOnboarding", "true");
+    setShowOnboarding(false);
+  };
 
   const handleShipmentSubmit = (shipment: ShipmentRequest) => {
     setCurrentShipment(shipment);
     setView("monitor");
+    toast({
+      title: "Sevkiyat Oluşturuldu",
+      description: `${shipment.fromCity} → ${shipment.toCity} güzergahı için nakliyeciler aranıyor.`,
+    });
   };
 
   const handleNewShipment = () => {
@@ -44,25 +66,55 @@ export const Dashboard = () => {
 
   const handleSendWhatsApp = (carrierId: string) => {
     console.log("Sending WhatsApp to:", carrierId);
+    toast({
+      title: "WhatsApp Gönderildi",
+      description: "Nakliyeciye WhatsApp mesajı gönderildi.",
+    });
+  };
+
+  // Get current step for progress indicator
+  const getCurrentStep = (): 1 | 2 | 3 => {
+    if (!currentShipment) return 1;
+    if (view === "monitor") return 2;
+    return 3;
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 space-y-6">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-glow text-primary-foreground p-6 rounded-lg shadow-lg">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Sesli Lojistik Asistanı</h1>
-            <p className="text-primary-foreground/80">Nakliyecilerinizi otomatik arayın, hızla kapasite bulun</p>
+    <div className="min-h-screen bg-background">
+      {/* Sticky Header */}
+      <div className="sticky top-0 z-50 bg-gradient-to-r from-primary to-primary-glow text-primary-foreground shadow-lg">
+        <div className="p-4 md:p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold">Sesli Lojistik Asistanı</h1>
+              <p className="text-primary-foreground/80 text-sm md:text-base">Nakliyecilerinizi otomatik arayın, hızla kapasite bulun</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowOnboarding(true)}
+                className="text-primary-foreground hover:bg-white/20"
+              >
+                <HelpCircle className="h-4 w-4 mr-1" />
+                Yardım
+              </Button>
+              <div className="text-right hidden sm:block">
+                <p className="text-sm text-primary-foreground/80">Hoş geldiniz</p>
+                <p className="font-semibold">Ahmet Bey</p>
+              </div>
+            </div>
           </div>
-          <div className="text-right">
-            <p className="text-sm text-primary-foreground/80">Hoş geldiniz</p>
-            <p className="font-semibold">Ahmet Bey</p>
-          </div>
+        </div>
+        
+        {/* Progress Steps */}
+        <div className="px-4 pb-4">
+          <ProgressSteps currentStep={getCurrentStep()} />
         </div>
       </div>
 
-      {/* Stats Cards */}
+      <div className="p-4 space-y-6">
+        {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <Card>
           <CardContent className="p-4">
@@ -223,6 +275,13 @@ export const Dashboard = () => {
           )}
         </div>
       </div>
+      </div>
+
+      {/* Onboarding Tutorial */}
+      <OnboardingTutorial 
+        isOpen={showOnboarding} 
+        onClose={handleOnboardingClose} 
+      />
     </div>
   );
 };
