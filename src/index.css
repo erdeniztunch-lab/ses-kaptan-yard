@@ -8,65 +8,87 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Logistics-themed color palette */
-    --background: 240 10% 97%;
-    --foreground: 222 47% 11%;
+    /* Professional B2B SaaS Color System */
+    --background: 220 14% 96%;
+    --foreground: 220 9% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 9% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 9% 15%;
 
-    /* Primary: Professional logistics blue */
-    --primary: 212 94% 48%;
+    /* Primary: Enterprise Blue (Stripe-inspired) */
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 98%;
-    --primary-glow: 212 94% 65%;
+    --primary-glow: 221 83% 65%;
 
-    /* Secondary: Efficient green */
-    --secondary: 142 76% 36%;
+    /* Secondary: Professional Gray */
+    --secondary: 220 9% 46%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 212 15% 95%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 9% 46%;
 
-    /* Accent: Success/confirmation */
+    /* Accent: Success Green */
     --accent: 142 69% 58%;
     --accent-foreground: 0 0% 98%;
 
-    /* Warning: Pending/waiting */
-    --warning: 38 92% 50%;
+    /* Warning: Attention Orange */
+    --warning: 25 95% 53%;
     --warning-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 212 20% 90%;
-    --input: 212 20% 90%;
-    --ring: 212 94% 48%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(212 94% 48%), hsl(212 94% 65%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 69% 58%));
-    --shadow-elegant: 0 10px 30px -10px hsl(212 94% 48% / 0.2);
-    --shadow-card: 0 4px 20px -4px hsl(212 20% 50% / 0.1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Enterprise Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 83% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%), hsl(235 89% 62%));
+    --gradient-subtle: linear-gradient(135deg, hsl(220 14% 96%), hsl(0 0% 100%));
+    
+    /* Enhanced Shadows for Depth */
+    --shadow-xs: 0 1px 2px 0 hsl(220 9% 15% / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(220 9% 15% / 0.1), 0 1px 2px -1px hsl(220 9% 15% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(220 9% 15% / 0.1), 0 2px 4px -2px hsl(220 9% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 9% 15% / 0.1), 0 4px 6px -4px hsl(220 9% 15% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(220 9% 15% / 0.1), 0 8px 10px -6px hsl(220 9% 15% / 0.1);
 
-    /* Status colors for logistics workflow */
-    --status-pending: 38 91% 60%;      /* Orange */
-    --status-accepted: 142 76% 36%;    /* Green */
+    /* Status Colors for Enterprise */
+    --status-pending: 25 95% 53%;      /* Orange */
+    --status-accepted: 142 69% 58%;    /* Green */
     --status-unavailable: 0 84% 60%;   /* Red */
     --status-calling: 221 83% 53%;     /* Blue */
+    --status-processing: 262 83% 58%;  /* Purple */
 
-    /* Mobile-friendly spacing */
-    --spacing-touch: 44px;             /* Minimum touch target */
-    --spacing-mobile: 16px;            /* Mobile padding */
-    --spacing-card: 20px;              /* Card spacing */
+    /* Grid & Layout System */
+    --container-xs: 20rem;   /* 320px */
+    --container-sm: 24rem;   /* 384px */
+    --container-md: 28rem;   /* 448px */
+    --container-lg: 32rem;   /* 512px */
+    --container-xl: 36rem;   /* 576px */
 
-    /* Typography for mobile */
-    --text-mobile-large: 18px;
-    --text-mobile-medium: 16px;
-    --text-mobile-small: 14px;
+    /* Professional Typography Scale */
+    --text-xs: 0.75rem;   /* 12px */
+    --text-sm: 0.875rem;  /* 14px */
+    --text-base: 1rem;    /* 16px */
+    --text-lg: 1.125rem;  /* 18px */
+    --text-xl: 1.25rem;   /* 20px */
+    --text-2xl: 1.5rem;   /* 24px */
+    --text-3xl: 1.875rem; /* 30px */
+
+    /* Enhanced Spacing Scale */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
 
     --radius: 0.5rem;
 
