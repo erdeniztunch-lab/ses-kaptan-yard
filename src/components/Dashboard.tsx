@@ -8,6 +8,8 @@ import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { MetricCard } from "./MetricCard";
 import { ShipmentModal } from "./ShipmentModal";
+import { ShipmentsPage } from '@/components/ShipmentsPage'
+
 import { 
   BarChart3, 
   Phone, 
